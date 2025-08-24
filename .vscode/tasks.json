@@ -1,0 +1,34 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Server: npm run dev",
+      "type": "shell",
+      "command": "npm run dev",
+      "options": { "cwd": "${workspaceFolder}" },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Git: status",
+      "type": "shell",
+      "command": "bash -lc 'git status; echo \"(Git terminal ready — use it for add/commit/push)\"; exec $SHELL'",
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "Utils: shell",
+      "type": "shell",
+      "command": "bash -lc 'echo \"(Utilities terminal ready)\"; exec $SHELL'",
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "Open Cockpit",
+      "dependsOn": [
+        "Server: npm run dev",
+        "Git: status",
+        "Utils: shell"
+      ],
+      "dependsOrder": "parallel"
+    }
+  ]
+}
